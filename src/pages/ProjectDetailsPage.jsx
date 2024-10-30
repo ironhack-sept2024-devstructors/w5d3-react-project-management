@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import { API_URL } from "../config/api";
+import AddTask from "../components/AddTask";
 
 
 function ProjectDetailsPage() {
@@ -41,6 +42,8 @@ function ProjectDetailsPage() {
 
     return (
         <div className="ProjectDetailsPage">
+
+            {/* project details */}
             {project && (
                 <>
                     <h1>{project.title}</h1>
@@ -48,6 +51,10 @@ function ProjectDetailsPage() {
                 </>
             )}
 
+            {/* form to create new tasks */}
+            <AddTask callbackToRefresh={getProject} projectId={projectId} />
+
+            {/* list of tasks */}
             {project &&
                 project.tasks.map((task) => {
                     return (
