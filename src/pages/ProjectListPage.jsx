@@ -4,12 +4,14 @@ import axios from "axios";
 
 import Loader from "../components/Loader";
 
+import { API_URL } from "../config/api";
+
 function ProjectListPage() {
 
     const [projects, setProjects] = useState(null);
 
     useEffect(() => {
-        axios.get("https://project-management-api-4641927fee65.herokuapp.com/projects/")
+        axios.get(`${API_URL}/projects/`)
             .then(response => {
                 setProjects(response.data);
             })
