@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import { API_URL } from "../config/api";
@@ -12,6 +12,8 @@ function ProjectDetailsPage() {
 
     const { projectId } = useParams();
 
+    const navigate = useNavigate();
+
     const getProject = () => {
         axios.get(`${API_URL}/projects/${projectId}?_embed=tasks`)
             .then((response) => {
@@ -19,6 +21,14 @@ function ProjectDetailsPage() {
             })
             .catch((error) => console.log("Error getting project details from the API...", error));
     };
+
+    const deleteProject = () => {
+        axios.delete(`${API_URL}/projects/${projectId}`)
+            .then( response => {
+                navigate("/projects");
+            })
+            .catch((error) => console.log("Error deleting project...", error));
+    }
 
     useEffect(() => {
         getProject();
@@ -53,8 +63,10 @@ function ProjectDetailsPage() {
             </Link>
 
             <Link to={`/projects/edit/${projectId}`}>
-                <button>Edit Project</button>
+                <button>Edit</button>
             </Link>
+
+            <button onClick={deleteProject}>Delete</button>
 
         </div>
     );
