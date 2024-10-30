@@ -46,8 +46,7 @@ function CreateProjectPage() {
 
                 <label>
                     Description: 
-                    <input 
-                        type="text" 
+                    <textarea 
                         name="description" 
                         placeholder="enter the description" 
                         value={description}
