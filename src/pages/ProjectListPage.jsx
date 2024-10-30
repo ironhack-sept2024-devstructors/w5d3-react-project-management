@@ -27,7 +27,7 @@ function ProjectListPage() {
     }
 
     return (
-        <div className="ProjectListPage">
+        <div className="ProjectListPage card-list">
             {projects && projects.map(projectDetails => {
                 return (
                     <div className="card" key={projectDetails.id}>

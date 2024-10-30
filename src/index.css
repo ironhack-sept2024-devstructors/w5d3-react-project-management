@@ -32,6 +32,23 @@ textarea {
   display: inline-block;
 }
 
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-list .card {
+  flex: 0 1 100%;
+  margin: 1rem 2rem;
+}
+
+.card {
+  padding: 10px;
+  box-shadow: 0px 2px 3px grey;
+  background: #94a7c8;
+  border-radius: 4px;
+}
+
 .Navbar {
   background: #515f7d;
   color: white;
@@ -47,16 +64,6 @@ textarea {
   color: white;
   font-size: 24px;
   font-weight: 600;
-}
-
-.card {
-  width: 400px;
-  padding: 10px;
-  box-shadow: 0px 2px 3px grey;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  background: #94a7c8;
-  border-radius: 4px;
 }
 
 .ProjectCard h3::after {
@@ -97,4 +104,11 @@ textarea {
 
 .TaskCard {
   background-color: #dfeef9;
+}
+
+
+@media (min-width: 768px) {
+  .card-list .card {
+    flex: 0 1 calc(33.33% - 4rem - 20px); /* 33.33% minus 2x horizontal margins and 2x horizontal paddings */
+  }
 }

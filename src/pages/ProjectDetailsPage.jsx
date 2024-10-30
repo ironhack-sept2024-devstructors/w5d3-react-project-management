@@ -55,15 +55,17 @@ function ProjectDetailsPage() {
             <AddTask callbackToRefresh={getProject} projectId={projectId} />
 
             {/* list of tasks */}
-            {project &&
-                project.tasks.map((task) => {
-                    return (
-                        <li className="TaskCard card" key={task.id}>
-                            <h3>{task.title}</h3>
-                            <h4>Description:</h4>
-                            <p>{task.description}</p>
-                        </li>)
-                })}
+            <div className="card-list">
+                {project &&
+                    project.tasks.map((task) => {
+                        return (
+                            <li className="TaskCard card" key={task.id}>
+                                <h3>{task.title}</h3>
+                                <h4>Description:</h4>
+                                <p>{task.description}</p>
+                            </li>)
+                    })}
+            </div>
 
             <Link to="/projects">
                 <button>Back to projects</button>
